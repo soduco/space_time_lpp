@@ -16,44 +16,44 @@ library(maptools)
 #' @export
 
 lpp_dist_with_sims <- function(listpp, listnetwork, nsim){
-  # reading data
-  liste_patterns_snap <- pp
+  
+  # data
+  list_patterns_snap <- pp
   list_of_networks <- lnetwork
   
-  #### distances matrices
+  #### create random points on network and  calculating distances ####
+  nsimulation <- nsim # expressive
   
-  #### random points on network ####
-  # generate points on a linear network
+  #3 generate points on a linear network
   liste_rss_csr <- list()
-  nsimulation <- nsim
   
-  for (i in 1:length(liste_patterns_snap)) {
-    # run génération de points aléatoires
-    liste_calcul <- runiflpp(n = nrow(liste_patterns_snap[[i]]), 
-                             L = maptools::as.linnet.SpatialLines(X = as(list_of_networks[[i]], "Spatial")), 
-                             nsim = nsimulation) # nombre de simulation choisies
+  for (i in 1:length(list_patterns_snap)) {
     
-    liste_rss_csr[[i]] <- liste_calcul
+    list_calcul <- runiflpp(n = nrow(list_patterns_snap[[i]]), # generate same N points as observed data
+                             L = maptools::as.linnet.SpatialLines(X = as(list_of_networks[[i]], "Spatial")), 
+                             nsim = nsimulation)
+    
+    liste_rss_csr[[i]] <- list_calcul
     
   }
   
-  
-  ### calculs des shortest past
-  # calcul des shortest past pour toutes les simulations
-  liste_dist_pi_p <- list()
+  ### calculating shortest paths for simulations
+  list_dist_pi_p <- list()
   
   for (i in 1:length(liste_rss_csr)) {
     
     liste_rss_csr_extract <- lapply(liste_rss_csr[[i]], `[`, c())
     
-    ma_liste_simulation <- list()
+    simulation_list <- list()
     
     for (j in 1:length(liste_rss_csr_extract)) {
       dist_pi_p <- pairdist(X = liste_rss_csr_extract[[j]])
       
+      # transform upper distance matrix as NA
       dist_pi_p[upper.tri(x = dist_pi_p, diag = TRUE)] <- NA
       
-      ma_liste_simulation[[j]] <- dist_pi_p %>%
+      # creating results as tibble in long format
+      simulation_list[[j]] <- dist_pi_p %>%
         as_tibble() %>%
         rowid_to_column(var = "Pi") %>%
         pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
@@ -63,22 +63,23 @@ lpp_dist_with_sims <- function(listpp, listnetwork, nsim){
       
     }
     
-    liste_dist_pi_p[[i]] <- ma_liste_simulation
+    list_dist_pi_p[[i]] <- simulation_list
     
   }
   
-  ### observed distributions
-  liste_observed_dist <- list()
+  #### Calculating distances on observed point patterns ####
+  list_observed_dist <- list()
   
-  for (i in 1:length(liste_patterns_snap)) {
-    observed_lpp <- lpp(X = as.ppp(X = liste_patterns_snap[[i]] %>% select(geometry)), # transformation du sf en Planar point pattern (ppp)
-                        L = maptools::as.linnet.SpatialLines(X = as(list_of_networks[[i]], "Spatial"))) # transofrmation en Linear network (Spatial lines)
+  for (i in 1:length(list_patterns_snap)) {
+    # creation of an lpp object
+    observed_lpp <- lpp(X = as.ppp(X = list_patterns_snap[[i]] %>% select(geometry)),
+                        L = maptools::as.linnet.SpatialLines(X = as(list_of_networks[[i]], "Spatial")))
     
-    tableau_observed_dist_pi_p <- pairdist(X = observed_lpp)
+    matrix_observed_dist_pi_p <- pairdist(X = observed_lpp)
     
-    tableau_observed_dist_pi_p[upper.tri(x = tableau_observed_dist_pi_p, diag = TRUE)] <- NA
+    matrix_observed_dist_pi_p[upper.tri(x = matrix_observed_dist_pi_p, diag = TRUE)] <- NA
     
-    liste_observed_dist[[i]] <- tableau_observed_dist_pi_p %>%
+    list_observed_dist[[i]] <- matrix_observed_dist_pi_p %>%
       as_tibble() %>%
       rowid_to_column(var = "Pi") %>%
       pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
@@ -88,15 +89,14 @@ lpp_dist_with_sims <- function(listpp, listnetwork, nsim){
     
   }
   
-  ### tableaux pour plot des shortest path ####
-  # simulation et observations
-  # en tibble
+  ### list of output tibbles ####
+  # simulation and observed shortest paths
   list_result_shortest_path_matrices <- list()
   
-  for (i in 1:length(liste_dist_pi_p)) {
-    tableau_init <- rbindlist(l = liste_dist_pi_p[[i]]) %>% 
+  for (i in 1:length(list_dist_pi_p)) {
+    tableau_init <- rbindlist(l = list_dist_pi_p[[i]]) %>% 
       as_tibble() %>%
-      bind_rows(liste_observed_dist[[i]])
+      bind_rows(list_observed_dist[[i]])
     
     
     list_result_shortest_path_matrices[[i]] <- tableau_init
