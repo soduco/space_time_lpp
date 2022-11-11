@@ -7,7 +7,6 @@
 #' @return The list of tibble of shortest paths
 #' @examples 
 #' blob
-#' @author boubou
 #' @export
 
 list_dist_with_sims <- function(listpp, listnetwork, nsim){
