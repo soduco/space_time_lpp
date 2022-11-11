@@ -2,25 +2,33 @@
 % Please edit documentation in R/distances_on_network.R
 \name{dist_with_sims_list}
 \alias{dist_with_sims_list}
-\title{Shortest path distances between a list of points on a list of planar network}
+\title{Shortest paths distances between points (in class lists) on planar networks (in class lists)}
 \usage{
 dist_with_sims_list(listpp, listnetwork, nsim)
 }
 \arguments{
-\item{listpp}{a list of sf point patterns}
+\item{listpp}{A list of sf point patterns}
 
-\item{listnetwork}{a list of sf planar networks lines}
+\item{listnetwork}{A list of sf planar networks lines}
 
-\item{nsim}{the number of simulations (must be > 1)}
+\item{nsim}{The number of simulations chosen for randomly simulated points (must be > 1)}
 }
 \value{
-a list of tibble of shortest paths
+A list of tibble of shortest paths
 }
 \description{
-Computation of shortest path distances between all observed points of a planar network and randomly simulated points.
-Input data point must be snapped on linear network.
-The length and order of lists of points and networks must be equivalent and consistent.
+Computation of shortest path distances between all observed points of a planar networks and
+shortest paths distances between randomly simulated points on the same planar networks.
+Input data point patterns must be snapped on linear networks.
+The length and order of lists of points and planar networks must be equivalent and consistent.
+}
+\details{
+Pi/P points numbers in output tibbles refer to initial order of rows in point patterns data.
 }
 \examples{
 blob
+
+}
+\seealso{
+Snapping points on lines: \code{\link[maptools::snapPointsToLines]{maptools::snapPointsToLines()}}
 }

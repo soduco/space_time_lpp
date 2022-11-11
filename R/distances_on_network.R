@@ -1,16 +1,23 @@
-#' Shortest path distances between a list of points on a list of planar network
+#' Shortest paths distances between points (in class lists) on planar networks (in class lists)
 #'
 #' @description
-#' Computation of shortest path distances between all observed points of a planar network and randomly simulated points.
-#' Input data point must be snapped on linear network.
-#' The length and order of lists of points and networks must be equivalent and consistent.
+#' Computation of shortest path distances between all observed points of a planar networks and
+#' shortest paths distances between randomly simulated points on the same planar networks.
+#' Input data point patterns must be snapped on linear networks.
+#' The length and order of lists of points and planar networks must be equivalent and consistent.
 #'
-#' @param listpp a list of sf point patterns
-#' @param listnetwork a list of sf planar networks lines
-#' @param nsim the number of simulations (must be > 1)
-#' @return a list of tibble of shortest paths
+#' @param listpp A list of sf point patterns
+#' @param listnetwork A list of sf planar networks lines
+#' @param nsim The number of simulations chosen for randomly simulated points (must be > 1)
+#' @return A list of tibble of shortest paths
+#'
+#' @details Pi/P points numbers in output tibbles refer to initial order of rows in point patterns data.
+#'
+#' @seealso Snapping points on lines: \code{\link[maptools::snapPointsToLines]{maptools::snapPointsToLines()}}
+#'
 #' @examples
 #' blob
+#'
 #' @importFrom Rdpack reprompt
 #' @export
 
@@ -90,7 +97,7 @@ dist_with_sims_list <- function(listpp, listnetwork, nsim) {
 
   for (i in 1:length(list_dist_pi_p)) {
     tableau_init <- data.table::rbindlist(l = list_dist_pi_p[[i]]) %>%
-      tibble::as_tibble(.name_repair = 'unique') %>%
+      tibble::as_tibble(.name_repair = "unique") %>%
       dplyr::bind_rows(list_observed_dist[[i]])
 
 
