@@ -7,9 +7,10 @@
 #' @return The list of tibble of shortest paths
 #' @examples 
 #' blob
+#' @importFrom Rdpack reprompt
 #' @export
 
-list_dist_with_sims <- function(listpp, listnetwork, nsim){
+dist_with_sims <- function(listpp, listnetwork, nsim){
   
   # data
   list_patterns_snap <- listpp
@@ -36,28 +37,20 @@ list_dist_with_sims <- function(listpp, listnetwork, nsim){
   
   for (i in 1:length(liste_rss_csr)) {
     
-    liste_rss_csr_extract <- lapply(liste_rss_csr[[i]], `[`, c())
+    # distance matrix calculation
+    dist_pi_p <- pairdist(X = liste_rss_csr[[i]])
     
-    simulation_list <- list()
+    # transform upper distance matrix as NA
+    dist_pi_p[upper.tri(x = dist_pi_p, diag = TRUE)] <- NA
     
-    for (j in 1:length(liste_rss_csr_extract)) {
-      dist_pi_p <- pairdist(X = liste_rss_csr_extract[[j]])
-      
-      # transform upper distance matrix as NA
-      dist_pi_p[upper.tri(x = dist_pi_p, diag = TRUE)] <- NA
-      
-      # creating results as tibble in long format
-      simulation_list[[j]] <- dist_pi_p %>%
-        as_tibble() %>%
-        rowid_to_column(var = "Pi") %>%
-        pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
-        filter(!is.na(dist_pi_p)) %>%
-        mutate(P = str_replace_all(string = P, pattern = "V", replacement = "")) %>%
-        mutate(sim = j)
-      
-    }
-    
-    list_dist_pi_p[[i]] <- simulation_list
+    # creating results as tibble in long format
+    list_dist_pi_p[[i]] <- dist_pi_p %>%
+      as_tibble() %>%
+      rowid_to_column(var = "Pi") %>%
+      pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
+      filter(!is.na(dist_pi_p)) %>%
+      mutate(P = str_replace_all(string = P, pattern = "V", replacement = "")) %>%
+      mutate(sim = i)
     
   }
   
@@ -88,8 +81,7 @@ list_dist_with_sims <- function(listpp, listnetwork, nsim){
   list_result_shortest_path_matrices <- list()
   
   for (i in 1:length(list_dist_pi_p)) {
-    tableau_init <- rbindlist(l = list_dist_pi_p[[i]]) %>% 
-      as_tibble() %>%
+    tableau_init <- list_dist_pi_p[[i]] %>% 
       bind_rows(list_observed_dist[[i]])
     
     

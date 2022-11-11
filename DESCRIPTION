@@ -9,9 +9,10 @@ Description: Points patterns analyses related to a planar network qualified in t
 License: use_mit_license()
 Encoding: UTF-8
 RoxygenNote: 7.2.1
+Roxygen: list(markdown = TRUE)
 Imports: 
-    data.table,
     dplyr,
     maptools,
+    Rdpack (>= 0.7),
     sf,
     spatstat

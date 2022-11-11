@@ -4,3 +4,5 @@
 .Rproj.user
 .Rhistory
 .RData
+*.rds
+tests_package.R
