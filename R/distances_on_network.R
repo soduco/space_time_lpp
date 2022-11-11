@@ -1,9 +1,3 @@
-library(sf)
-library(tidyverse)
-library(spatstat)
-library(data.table)
-library(maptools)
-
 #' List of shortest path distances between points in a planar network
 #'
 #' Computation of shortest path distances between all observed points of a planar network and randomly simulated points
