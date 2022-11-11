@@ -13,8 +13,12 @@ Roxygen: list(markdown = TRUE)
 Imports: 
     data.table,
     dplyr,
+    magrittr (>= 2.0.3),
     maptools,
     Rdpack (>= 0.7),
     sf,
     spatstat,
-    spatstat.linnet
+    spatstat.linnet,
+    stringr,
+    tibble,
+    tidyr
