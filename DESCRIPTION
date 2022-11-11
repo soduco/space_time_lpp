@@ -16,4 +16,5 @@ Imports:
     maptools,
     Rdpack (>= 0.7),
     sf,
-    spatstat
+    spatstat,
+    spatstat.linnet
