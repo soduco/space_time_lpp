@@ -1,10 +1,10 @@
 #' List of shortest path distances between points in a planar network
 #'
 #' Computation of shortest path distances between all observed points of a planar network and randomly simulated points
-#' @param listpp The list of sf point patterns
-#' @param listnetwork The list of sf planar networks lines
-#' @param nsim The number of simulations
-#' @return The list of tibble of shortest paths
+#' @param listpp a list of sf point patterns
+#' @param listnetwork a list of sf planar networks lines
+#' @param nsim the number of simulations
+#' @return a list of tibble of shortest paths
 #' @examples 
 #' blob
 #' @importFrom Rdpack reprompt

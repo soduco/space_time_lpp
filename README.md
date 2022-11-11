@@ -4,4 +4,4 @@ Type: R Package
 
 Title: Space-time point pattern analysis on planar network
 
-Version: 0.0.1.0
+Version: 0.0.0.9000

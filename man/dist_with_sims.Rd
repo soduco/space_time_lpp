@@ -7,14 +7,14 @@
 dist_with_sims(listpp, listnetwork, nsim)
 }
 \arguments{
-\item{listpp}{The list of sf point patterns}
+\item{listpp}{a list of sf point patterns}
 
-\item{listnetwork}{The list of sf planar networks lines}
+\item{listnetwork}{a list of sf planar networks lines}
 
-\item{nsim}{The number of simulations}
+\item{nsim}{the number of simulations}
 }
 \value{
-The list of tibble of shortest paths
+a list of tibble of shortest paths
 }
 \description{
 Computation of shortest path distances between all observed points of a planar network and randomly simulated points
