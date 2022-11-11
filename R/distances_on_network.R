@@ -50,12 +50,12 @@ dist_with_sims_list <- function(listpp, listnetwork, nsim) {
       dist_pi_p[upper.tri(x = dist_pi_p, diag = TRUE)] <- NA
 
       ma_liste_simulation[[j]] <- dist_pi_p %>%
-        as_tibble() %>%
+        tibble::as_tibble() %>%
         tibble::rowid_to_column(var = "Pi") %>%
         tidyr::pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
-        filter(!is.na(dist_pi_p)) %>%
-        mutate(P = stringr::str_replace_all(string = P, pattern = "V", replacement = "")) %>%
-        mutate(sim = j)
+        dplyr::filter(!is.na(dist_pi_p)) %>%
+        dplyr::mutate(P = stringr::str_replace_all(string = P, pattern = "V", replacement = "")) %>%
+        dplyr::mutate(sim = j)
     }
 
     list_dist_pi_p[[i]] <- ma_liste_simulation
@@ -67,7 +67,7 @@ dist_with_sims_list <- function(listpp, listnetwork, nsim) {
   for (i in 1:length(list_patterns_snap)) {
     # creation of an lpp object
     observed_lpp <- spatstat.linnet::lpp(
-      X = spatstat.geom::as.ppp(X = list_patterns_snap[[i]] %>% select(geometry)),
+      X = spatstat.geom::as.ppp(X = list_patterns_snap[[i]] %>% dplyr::select(geometry)),
       L = maptools::as.linnet.SpatialLines(X = as(list_of_networks[[i]], "Spatial"))
     )
 
@@ -76,12 +76,12 @@ dist_with_sims_list <- function(listpp, listnetwork, nsim) {
     matrix_observed_dist_pi_p[upper.tri(x = matrix_observed_dist_pi_p, diag = TRUE)] <- NA
 
     list_observed_dist[[i]] <- matrix_observed_dist_pi_p %>%
-      as_tibble() %>%
+      tibble::as_tibble() %>%
       tibble::rowid_to_column(var = "Pi") %>%
       tidyr::pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
-      filter(!is.na(dist_pi_p)) %>%
-      mutate(P = stringr::str_replace_all(string = P, pattern = "V", replacement = "")) %>%
-      mutate(sim = NA)
+      dplyr::filter(!is.na(dist_pi_p)) %>%
+      dplyr::mutate(P = stringr::str_replace_all(string = P, pattern = "V", replacement = "")) %>%
+      dplyr::mutate(sim = NA)
   }
 
   ### list of output tibbles ####
@@ -90,8 +90,8 @@ dist_with_sims_list <- function(listpp, listnetwork, nsim) {
 
   for (i in 1:length(list_dist_pi_p)) {
     tableau_init <- data.table::rbindlist(l = list_dist_pi_p[[i]]) %>%
-      as_tibble() %>%
-      bind_rows(list_observed_dist[[i]])
+      tibble::as_tibble(.name_repair = 'unique') %>%
+      dplyr::bind_rows(list_observed_dist[[i]])
 
 
     list_result_shortest_path_matrices[[i]] <- tableau_init
