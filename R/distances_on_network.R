@@ -7,15 +7,16 @@ library(maptools)
 #' List of shortest path distances between points in a planar network
 #'
 #' Computation of shortest path distances between all observed points of a planar network and randomly simulated points
-#' @param listpp The list of sf point pattern
-#' @param listnetwork The list of sf planar network lines
+#' @param listpp The list of sf point patterns
+#' @param listnetwork The list of sf planar networks lines
 #' @param nsim The number of simulations
 #' @return The list of tibble of shortest paths
 #' @examples 
 #' blob
+#' @author boubou
 #' @export
 
-lpp_dist_with_sims <- function(listpp, listnetwork, nsim){
+list_dist_with_sims <- function(listpp, listnetwork, nsim){
   
   # data
   list_patterns_snap <- listpp
