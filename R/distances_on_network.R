@@ -18,8 +18,8 @@ library(maptools)
 lpp_dist_with_sims <- function(listpp, listnetwork, nsim){
   
   # data
-  list_patterns_snap <- pp
-  list_of_networks <- lnetwork
+  list_patterns_snap <- listpp
+  list_of_networks <- listnetwork
   
   #### create random points on network and  calculating distances ####
   nsimulation <- nsim # expressive
