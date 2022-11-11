@@ -1,25 +1,29 @@
-#' List of shortest path distances between points in a planar network
+#' Shortest path distances between a list of points on a list of planar network
 #'
-#' Computation of shortest path distances between all observed points of a planar network and randomly simulated points
+#' @description 
+#' Computation of shortest path distances between all observed points of a planar network and randomly simulated points.
+#' Input data point must be snapped on linear network. 
+#' The length and order of lists of points and networks must be equivalent and consistent.
+#' 
 #' @param listpp a list of sf point patterns
 #' @param listnetwork a list of sf planar networks lines
-#' @param nsim the number of simulations
+#' @param nsim the number of simulations (must be > 1)
 #' @return a list of tibble of shortest paths
 #' @examples 
 #' blob
 #' @importFrom Rdpack reprompt
 #' @export
 
-dist_with_sims <- function(listpp, listnetwork, nsim){
+dist_with_sims_list <- function(listpp, listnetwork, nsim){
   
-  # data
+  # expressive data
   list_patterns_snap <- listpp
   list_of_networks <- listnetwork
   
   #### create random points on network and  calculating distances ####
   nsimulation <- nsim # expressive
   
-  #3 generate points on a linear network
+  ## generate points on a linear network
   liste_rss_csr <- list()
   
   for (i in 1:length(list_patterns_snap)) {
@@ -37,20 +41,26 @@ dist_with_sims <- function(listpp, listnetwork, nsim){
   
   for (i in 1:length(liste_rss_csr)) {
     
-    # distance matrix calculation
-    dist_pi_p <- pairdist(X = liste_rss_csr[[i]])
+    liste_rss_csr_extract <- lapply(liste_rss_csr[[i]], `[`, c())
     
-    # transform upper distance matrix as NA
-    dist_pi_p[upper.tri(x = dist_pi_p, diag = TRUE)] <- NA
+    ma_liste_simulation <- list()
     
-    # creating results as tibble in long format
-    list_dist_pi_p[[i]] <- dist_pi_p %>%
-      as_tibble() %>%
-      rowid_to_column(var = "Pi") %>%
-      pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
-      filter(!is.na(dist_pi_p)) %>%
-      mutate(P = str_replace_all(string = P, pattern = "V", replacement = "")) %>%
-      mutate(sim = i)
+    for (j in 1:length(liste_rss_csr_extract)) {
+      dist_pi_p <- pairdist(X = liste_rss_csr_extract[[j]])
+      
+      dist_pi_p[upper.tri(x = dist_pi_p, diag = TRUE)] <- NA
+      
+      ma_liste_simulation[[j]] <- dist_pi_p %>%
+        as_tibble() %>%
+        rowid_to_column(var = "Pi") %>%
+        pivot_longer(cols = -Pi, names_to = "P", values_to = "dist_pi_p") %>%
+        filter(!is.na(dist_pi_p)) %>%
+        mutate(P = str_replace_all(string = P, pattern = "V", replacement = "")) %>%
+        mutate(sim = j)
+      
+    }
+    
+    list_dist_pi_p[[i]] <- ma_liste_simulation
     
   }
   
@@ -81,7 +91,8 @@ dist_with_sims <- function(listpp, listnetwork, nsim){
   list_result_shortest_path_matrices <- list()
   
   for (i in 1:length(list_dist_pi_p)) {
-    tableau_init <- list_dist_pi_p[[i]] %>% 
+    tableau_init <- rbindlist(l = list_dist_pi_p[[i]]) %>% 
+      as_tibble() %>%
       bind_rows(list_observed_dist[[i]])
     
     

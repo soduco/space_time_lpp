@@ -11,6 +11,7 @@ Encoding: UTF-8
 RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 Imports: 
+    data.table,
     dplyr,
     maptools,
     Rdpack (>= 0.7),
