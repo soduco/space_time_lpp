@@ -6,3 +6,6 @@
 .RData
 *.rds
 tests_package.R
+data_init/cafe_osm.gpkg
+*.gpkg
+data_management.R

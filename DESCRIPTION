@@ -22,6 +22,7 @@ Imports:
     tidyr (>= 1.2.1)
 VignetteBuilder: 
     knitr
+LazyData: true
 Encoding: UTF-8
 RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
