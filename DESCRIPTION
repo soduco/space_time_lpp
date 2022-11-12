@@ -7,18 +7,21 @@ Author: Julie Gravier [aut, cre]
 Maintainer: Julie Gravier <juliecatherine.gravier@gmail.com>
 Description: Points patterns analyses related to a planar network qualified in time, either quantitatively (numerical dates) or qualitatively (historical period). Mainly based on linear point patterns.
 License: use_mit_license()
+Depends:
+    magrittr (>= 2.0.3)
+Imports: 
+    data.table (>= 1.14.4),
+    dplyr (>= 1.0.10),
+    maptools (>= 1.1-5),
+    Rdpack (>= 2.4),
+    sf (>= 1.0-9),
+    spatstat.geom (>= 3.0-3),
+    spatstat.linnet (>= 3.0-2),
+    stringr (>= 1.4.1),
+    tibble (>= 3.1.8),
+    tidyr (>= 1.2.1)
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
 RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
-Imports: 
-    data.table,
-    dplyr,
-    magrittr (>= 2.0.3),
-    maptools,
-    Rdpack (>= 0.7),
-    sf,
-    spatstat,
-    spatstat.linnet,
-    stringr,
-    tibble,
-    tidyr
