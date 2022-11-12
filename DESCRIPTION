@@ -8,7 +8,8 @@ Maintainer: Julie Gravier <juliecatherine.gravier@gmail.com>
 Description: Points patterns analyses related to a planar network qualified in time, either quantitatively (numerical dates) or qualitatively (historical period). Mainly based on linear point patterns.
 License: use_mit_license()
 Depends:
-    magrittr (>= 2.0.3)
+    magrittr (>= 2.0.3),
+    R (>= 2.10)
 Imports: 
     data.table (>= 1.14.4),
     dplyr (>= 1.0.10),
