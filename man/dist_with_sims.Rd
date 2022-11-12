@@ -29,9 +29,11 @@ Input point patterns data must be snapped on linear networks.
 }
 }
 \examples{
-distances <- dist_with_sims(pp = liste_pp[[1]], network = liste_network[[1]], nsim = 5)
+pharmacy # point pattern data
+paris_network # planar network data 
+distances <- dist_with_sims(pp = pharmacy, network = paris_network, nsim = 2)
 library(ggplot2)
-ggplot(data = distances, mapping = aes(x = dist_pi_p, color = type)) + 
+ggplot(data = distances, mapping = aes(x = dist_pi_p, color = type)) +
 geom_density()
 
 }
