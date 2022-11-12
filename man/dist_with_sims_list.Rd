@@ -29,6 +29,26 @@ The length and order of lists of points and planar networks must be equivalent a
 \code{type} to the calculated distance depending on whether the points are simulated or observed.
 }
 }
+\examples{
+library(sf)
+library(ggplot2)
+library(dplyr)
+
+list_point_pattern <- pharmacy_coffee \%>\%
+group_split(amenity)
+list_network <- c(list(paris_network), list(paris_network))
+list_distances <- dist_with_sims_list(listpp = list_point_pattern, listnetwork = list_network, nsim = 2)
+
+results <- list_distances[[1]] \%>\%
+mutate(amenity = list_point_pattern[[1]]$amenity[1]) \%>\%
+bind_rows(list_distances[[2]] \%>\%
+mutate(amenity = list_point_pattern[[2]]$amenity[1]))
+
+ggplot(data = results, mapping = aes(x = dist_pi_p, color = type)) +
+geom_density() +
+facet_wrap(~amenity)
+
+}
 \seealso{
 \code{\link[=snapPointsToLines]{snapPointsToLines()}} for snapping points on lines.
 }
