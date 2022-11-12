@@ -1,6 +1,13 @@
 
 # spacetimeLPP R package
 
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![R](https://img.shields.io/badge/R-%3E%3D%202.10-blue)
+
+![Dependencies](https://img.shields.io/badge/dependecies-magrittr-blue)
+![Coverage](https://img.shields.io/badge/coverage-20%25-red)
+
 ## Space-time point pattern analysis on planar network
 
 spacetimeLPP is an R package facilitating the analysis of point patterns
@@ -45,16 +52,16 @@ distances
     ## # A tibble: 28,359 × 5
     ##       Pi P     dist_pi_p   sim type      
     ##    <int> <chr>     <dbl> <int> <chr>     
-    ##  1     2 1         1517.     1 simulation
-    ##  2     3 1         2776.     1 simulation
-    ##  3     3 2         1321.     1 simulation
-    ##  4     4 1         3019.     1 simulation
-    ##  5     4 2         2477.     1 simulation
-    ##  6     4 3         2143.     1 simulation
-    ##  7     5 1         2697.     1 simulation
-    ##  8     5 2         2098.     1 simulation
-    ##  9     5 3         1765.     1 simulation
-    ## 10     5 4          389.     1 simulation
+    ##  1     2 1         1080.     1 simulation
+    ##  2     3 1          444.     1 simulation
+    ##  3     3 2          674.     1 simulation
+    ##  4     4 1         1182.     1 simulation
+    ##  5     4 2         2206.     1 simulation
+    ##  6     4 3         1577.     1 simulation
+    ##  7     5 1         1207.     1 simulation
+    ##  8     5 2          171.     1 simulation
+    ##  9     5 3          801.     1 simulation
+    ## 10     5 4         2333.     1 simulation
     ## # … with 28,349 more rows
 
 Visualisation of distances
