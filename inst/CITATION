@@ -1,8 +1,9 @@
 citHeader("To cite package spacetimeLPP in publications, please use:")
 
-citEntry(entry="Article",
+citEntry(entry="Misc",
   author = "Julie Gravier",
-  title = "{Space-time point pattern analysis on planar network}",
+  title = "{spacetimeLPP: Space-time point pattern analysis on planar network}",
   year = 2022,
   url = "https://github.com/soduco/space_time_lpp",
+textVersion = paste("Gravier J., spacetimeLPP: Space-time point pattern analysis on planar network, 2022, ", "https://github.com/soduco/space_time_lpp", sep = "")
 )

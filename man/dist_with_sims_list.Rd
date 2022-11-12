@@ -29,10 +29,6 @@ The length and order of lists of points and planar networks must be equivalent a
 \code{type} to the calculated distance depending on whether the points are simulated or observed.
 }
 }
-\examples{
-blobi
-
-}
 \seealso{
 \code{\link[=snapPointsToLines]{snapPointsToLines()}} for snapping points on lines.
 }

@@ -18,8 +18,6 @@
 #'
 #' @seealso [snapPointsToLines()] for snapping points on lines.
 #'
-#' @examples
-#' blobi
 #'
 #' @importFrom Rdpack reprompt
 #' @export
