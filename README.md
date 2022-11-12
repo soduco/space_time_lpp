@@ -1,7 +1,20 @@
-Package: spacetimeLPP
 
-Type: R Package
+# spacetimeLPP R package
 
-Title: Space-time point pattern analysis on planar network
+## Space-time point pattern analysis on planar network
 
-Version: 0.0.0.9000
+spacetimeLPP is an R package facilitating the analysis of point patterns
+on planar networks in time. In input, spatial data are considered in
+`sf` format and outputs are in `tidy` formats to simplify the use of the
+package. However, main calculations, e.g. distance matrices between
+points on network, are performed using the `spatstat` package for its
+computational speed.
+
+## Installing
+
+Install package from github:
+
+``` r
+library(remotes)
+install_github(repo = "soduco/space_time_lpp")
+```
