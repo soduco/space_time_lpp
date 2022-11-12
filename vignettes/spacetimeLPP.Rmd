@@ -1,0 +1,20 @@
+---
+title: "spacetimeLPP: Space-time point pattern analysis on planar network"
+author: "Julie Gravier"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{spacetimeLPP}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(spacetimeLPP)
+```

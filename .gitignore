@@ -10,3 +10,4 @@ data_init/cafe_osm.gpkg
 *.gpkg
 data_management.R
 README.Rmd
+inst/doc

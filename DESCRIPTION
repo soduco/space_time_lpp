@@ -1,5 +1,4 @@
 Package: spacetimeLPP
-Type: R Package
 Title: Space-time point pattern analysis on planar network
 Version: 0.0.0.9000
 Authors@R: person("Julie", "Gravier", "juliecatherine.gravier@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0449-6499"))
@@ -21,6 +20,10 @@ Imports:
     stringr (>= 1.4.1),
     tibble (>= 3.1.8),
     tidyr (>= 1.2.1)
+Suggests:
+    ggplot2,
+    knitr,
+    rmarkdown
 VignetteBuilder: 
     knitr
 LazyData: true
