@@ -6,7 +6,7 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 ![R](https://img.shields.io/badge/R-%3E%3D%202.10-blue) ![R CMD
 check](https://img.shields.io/badge/R%20CMD%20check-passing-green)
 ![Dependencies](https://img.shields.io/badge/dependencies-magrittr-blue)
-![Coverage](https://img.shields.io/badge/coverage-30%35-red)
+![Coverage](https://img.shields.io/badge/coverage-30%-red)
 
 ## Space-time point pattern analysis on planar network
 
@@ -54,16 +54,16 @@ distances
     ## # A tibble: 28,359 × 5
     ##       Pi P     dist_pi_p   sim type      
     ##    <int> <chr>     <dbl> <int> <chr>     
-    ##  1     2 1         1367.     1 simulation
-    ##  2     3 1          342.     1 simulation
-    ##  3     3 2         1029.     1 simulation
-    ##  4     4 1         3623.     1 simulation
-    ##  5     4 2         3146.     1 simulation
-    ##  6     4 3         3290.     1 simulation
-    ##  7     5 1         1997.     1 simulation
-    ##  8     5 2         2213.     1 simulation
-    ##  9     5 3         1864.     1 simulation
-    ## 10     5 4         2263.     1 simulation
+    ##  1     2 1          567.     1 simulation
+    ##  2     3 1         1424.     1 simulation
+    ##  3     3 2         1767.     1 simulation
+    ##  4     4 1         1893.     1 simulation
+    ##  5     4 2         2281.     1 simulation
+    ##  6     4 3         1099.     1 simulation
+    ##  7     5 1         1995.     1 simulation
+    ##  8     5 2         1941.     1 simulation
+    ##  9     5 3         2201.     1 simulation
+    ## 10     5 4         3262.     1 simulation
     ## # … with 28,349 more rows
 
 Visualisation of distances
