@@ -19,7 +19,7 @@
 #' @importFrom Rdpack reprompt
 #' @export
 
-dist_cluster <- function(pp, network, distparam) {
+dist_clustering <- function(pp, network, distparam) {
   
   # create lpp object from the two sf object
   observed_lpp <- spatstat.linnet::lpp(X = spatstat.geom::as.ppp(X = pp %>% dplyr::select(geometry)),
