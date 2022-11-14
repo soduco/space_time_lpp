@@ -21,7 +21,6 @@
 
 dist_clustering <- function(pp, network, distparam) {
   
-  #### clustering ####
   # create lpp object from the two sf object
   observed_lpp <- spatstat.linnet::lpp(X = spatstat.geom::as.ppp(X = pp %>% dplyr::select(geometry)),
                                        L = maptools::as.linnet.SpatialLines(X = as(network, "Spatial")))
