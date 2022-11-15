@@ -19,7 +19,8 @@ clusterpp_gini <- function(sfcluster) {
     sf::st_drop_geometry() %>%
     dplyr::group_by(cluster) %>%
     dplyr::summarise(count = n()) %>%
-    dplyr::mutate(gini = ineq::ineq(x = count, type = "Gini"))
+    dplyr::mutate(nb_element = sum(count)) %>%
+    dplyr::summarise(gini = ineq::ineq(x = count, type = "Gini"))
   
   return(cluster_gini)
 }
