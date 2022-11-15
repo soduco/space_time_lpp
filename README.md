@@ -6,7 +6,7 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 ![R](https://img.shields.io/badge/R-%3E%3D%202.10-blue) ![R CMD
 check](https://img.shields.io/badge/R%20CMD%20check-passing-green)
 ![Dependencies](https://img.shields.io/badge/dependencies-magrittr-blue)
-![Coverage](https://img.shields.io/badge/coverage-35%25-red)
+![Coverage](https://img.shields.io/badge/coverage-45%25-red)
 
 ## Space-time point pattern analysis on planar network
 
@@ -14,7 +14,7 @@ spacetimeLPP is a R package facilitating the analysis of point patterns
 on planar networks over time, as usually considered in history or
 archaeology, either by qualitative periods (e.g. 1820-1835 or the
 Augustan period) or by time steps (e.g. 1820 and 1835). In input,
-spatial data are considered in `sf` format and outputs are in `tidy` of
+spatial data are considered in `sf` format and outputs are in `tidy` or
 `sf` formats to simplify the use of the package. However, main
 calculations, as distance matrices between points on network, are
 performed using `spatstat` package for its computational speed.
@@ -35,8 +35,9 @@ the functions are based:
 
 ## Installing
 
-Package currently only exist as development on github. Install package
-from github:
+Package currently exist as development on github.
+
+Install package from github:
 
 ``` r
 library(remotes)
@@ -69,16 +70,16 @@ distances
     ## # A tibble: 28,359 × 5
     ##       Pi P     dist_pi_p   sim type      
     ##    <int> <chr>     <dbl> <int> <chr>     
-    ##  1     2 1        1244.      1 simulation
-    ##  2     3 1        2160.      1 simulation
-    ##  3     3 2        1964.      1 simulation
-    ##  4     4 1        1057.      1 simulation
-    ##  5     4 2         187.      1 simulation
-    ##  6     4 3        1905.      1 simulation
-    ##  7     5 1          64.8     1 simulation
-    ##  8     5 2        1308.      1 simulation
-    ##  9     5 3        2123.      1 simulation
-    ## 10     5 4        1121.      1 simulation
+    ##  1     2 1         1016.     1 simulation
+    ##  2     3 1         2006.     1 simulation
+    ##  3     3 2         2313.     1 simulation
+    ##  4     4 1         2717.     1 simulation
+    ##  5     4 2         2836.     1 simulation
+    ##  6     4 3         1042.     1 simulation
+    ##  7     5 1         1987.     1 simulation
+    ##  8     5 2         2212.     1 simulation
+    ##  9     5 3          837.     1 simulation
+    ## 10     5 4          738.     1 simulation
     ## # … with 28,349 more rows
 
 Visualisation of distances
