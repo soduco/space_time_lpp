@@ -12,6 +12,7 @@ Depends:
 Imports: 
     data.table (>= 1.14.4),
     dplyr (>= 1.0.10),
+    ineq,
     maptools (>= 1.1-5),
     methods,
     Rdpack (>= 2.4),

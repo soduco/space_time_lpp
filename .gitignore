@@ -11,3 +11,9 @@ data_init/cafe_osm.gpkg
 data_management.R
 README.Rmd
 inst/doc
+*.geojson
+*.dbf
+*.fix
+*.prj
+*.shp
+*.shx
