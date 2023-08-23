@@ -10,9 +10,7 @@
 #' @return A tibble of shortest paths
 #'
 #' @details 
-#' * `Pi`/`P` points numbers in output tibble refer to initial order of rows in point patterns data.
-#' * `sim` column refers to the to the number of a specific simulation and the 
-#' `type` to the calculated distance depending on whether the points are simulated or observed.
+#' * `pp1`/`pp2` points numbers in output tibble refer to initial orders of rows in point patterns data.
 #'
 #' @seealso [snapPointsToLines()] for snapping points on lines.
 #'

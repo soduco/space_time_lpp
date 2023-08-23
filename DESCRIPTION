@@ -14,7 +14,6 @@ Imports:
     dplyr (>= 1.0.10),
     ineq,
     maptools (>= 1.1-5),
-    methods,
     Rdpack (>= 2.4),
     sf (>= 1.0-9),
     spatstat.geom (>= 3.0-3),
@@ -22,7 +21,9 @@ Imports:
     stats,
     stringr (>= 1.4.1),
     tibble (>= 3.1.8),
-    tidyr (>= 1.2.1)
+    tidyr (>= 1.2.1),
+    methods,
+    stats
 Suggests:
     ggplot2,
     knitr,
@@ -31,5 +32,5 @@ VignetteBuilder:
     knitr
 LazyData: true
 Encoding: UTF-8
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
