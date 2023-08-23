@@ -1,7 +1,7 @@
 Package: spacetimeLPP
 Title: Space-time point pattern analysis on planar network
 Version: 0.0.0.9000
-Authors@R: person("Julie", "Gravier", middle = "Catherine", email = "juliecatherine.gravier@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0449-6499"))
+Authors@R: person("Julie", "Gravier", email = "juliecatherine.gravier@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0449-6499"))
 Author: Julie Gravier [aut, cre]
 Maintainer: Julie Gravier <juliecatherine.gravier@gmail.com>
 Description: Points patterns analyses related to a planar network qualified in time, either quantitatively (numerical dates) or qualitatively (historical period). Mainly based on linear point patterns.
@@ -22,8 +22,7 @@ Imports:
     stringr (>= 1.4.1),
     tibble (>= 3.1.8),
     tidyr (>= 1.2.1),
-    methods,
-    stats
+    methods
 Suggests:
     ggplot2,
     knitr,
